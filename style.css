@@ -1,0 +1,75 @@
+:root {
+    --textcolor: 0 0 0 / 1;
+    --easeInOut: cubic-bezier(.6,0,0,1);
+    --easeIn: cubic-bezier(.8,0,1,1);
+    --easeOut: cubic-bezier(.2,0,0,1);
+    --easeIn1: cubic-bezier(.4,0,1,1);
+    --easeIn2: cubic-bezier(.8,0,1,1);
+    --easeIn3: cubic-bezier(1,0,1,1);
+    --easeOut1: cubic-bezier(0,0,.6,1);
+    --easeOut2: cubic-bezier(0,0,.2,1);
+    --easeOut3: cubic-bezier(0,0,.1,1);
+    --easeOut4: cubic-bezier(0,0,0,1);
+    --easeInOut1: cubic-bezier(.4,0,.2,1);
+    --easeInOut2: cubic-bezier(.5,0,.2,1);
+    --easeInOut3: cubic-bezier(.5,0,.1,1);
+    --easeInOut4: cubic-bezier(.5,0,0,1);
+    --easeInOut5: cubic-bezier(.6,0,.1,1);
+    --easeInOut6: cubic-bezier(.6,0,0,1);
+    --easeInOut7: cubic-bezier(.3,0,0,1);
+    --easeLinear: cubic-bezier(0,0,1,1);
+  }
+
+
+  [data-spanify]{
+    visibility:hidden;
+    overflow:hidden;
+  }
+
+  [data-spanify] > span { overflow:hidden; }
+
+  [data-spanify] span {
+    position: relative;
+    display:inline-flex;
+    transition-property: transform;
+    transition-duration:0s;
+  }
+
+  [data-spanify][inview] { visibility:visible }
+
+  [data-spanify~=echo] [data-content]:before {
+    content: attr(data-content) attr(data-content) attr(data-content);
+    position: absolute;
+    word-break: break-all;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: transparent;
+    -webkit-text-stroke: 1px black;
+    transform: translateY(-100%);
+  }
+
+  [data-spanify~=char]>span>span>span,
+  [data-spanify~=word]>span>span{
+    transform:translateY(101%)
+  }
+  [data-spanify~=char][data-spanify~=echo]>span>span>span,
+  [data-spanify~=word][data-spanify~=echo]>span>span,
+  [data-spanify~=char][data-spanify~=echo][data-spanify~='reverse'][inview]>span>span>span,
+  [data-spanify~=word][data-spanify~=echo][data-spanify~='reverse'][inview]>span>span {
+    transform:translateY(401%)
+  }
+
+  [data-spanify~=char][inview]>span>span>span,
+  [data-spanify~=word][inview]>span>span,
+  [data-spanify~=char][data-spanify~=echo][inview]>span>span>span,
+  [data-spanify~=word][data-spanify~=echo][inview]>span>span,
+  [data-spanify~=char][data-spanify~=echo][data-spanify~='reverse']>span>span>span,
+  [data-spanify~=word][data-spanify~=echo][data-spanify~='reverse']>span>span {
+    transform:translateY(0%)
+  }
+
+  [data-spanify]:not([inview]) span {
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+  }
