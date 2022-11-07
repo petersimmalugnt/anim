@@ -1,4 +1,4 @@
-:root {
+  :root {
     --textcolor: 0 0 0 / 1;
     --easeInOut: cubic-bezier(.6,0,0,1);
     --easeIn: cubic-bezier(.8,0,1,1);
